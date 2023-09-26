@@ -8,20 +8,20 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 public class CheckoutYourInformationPage {
-    private WebDriver driver;
-    private final WebElement PAGE_HEADER;
-    private final WebElement SHOPPING_CART_BUTTON;
-    private final WebElement SECONDARY_HEADER;
-    private final WebElement FIRSTNAME_FIELD;
-    private final WebElement LASTNAME_FIELD;
-    private final WebElement POSTAL_CODE_FIELD;
-    private final String FIRSTNAME_FIELD_TEXT;
-    private final String LASTNAME_FIELD_TEXT;
-    private final String POSTAL_CODE_FIELD_TEXT;
-    private final WebElement CANCEL_BUTTON;
-    private final WebElement CONTINUE_BUTTON;
+    private final WebDriver driver;
+    private WebElement PAGE_HEADER;
+    private WebElement SHOPPING_CART_BUTTON;
+    private WebElement SECONDARY_HEADER;
+    private WebElement FIRSTNAME_FIELD;
+    private WebElement LASTNAME_FIELD;
+    private WebElement POSTAL_CODE_FIELD;
+    private String FIRSTNAME_FIELD_TEXT;
+    private String LASTNAME_FIELD_TEXT;
+    private String POSTAL_CODE_FIELD_TEXT;
+    private WebElement CANCEL_BUTTON;
+    private WebElement CONTINUE_BUTTON;
 
-    public CheckoutYourInformationPage(WebDriver driver) {
+    public CheckoutYourInformationPage(final WebDriver driver) {
         this.driver = driver;
         this.PAGE_HEADER = driver.findElement(By.cssSelector("div.app_logo"));
         this.SHOPPING_CART_BUTTON = driver.findElement(By.id("shopping_cart_container"));
@@ -65,10 +65,6 @@ public class CheckoutYourInformationPage {
         FIRSTNAME_FIELD.sendKeys(GlobalValues.FIRSTNAME);
         LASTNAME_FIELD.sendKeys(GlobalValues.LASTNAME);
         POSTAL_CODE_FIELD.sendKeys(GlobalValues.POSTAL_CODE);
-    }
-
-    public void clickCancelButton() {
-        CANCEL_BUTTON.click();
     }
 
     public void clickContinueButton() {

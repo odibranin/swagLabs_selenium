@@ -11,15 +11,15 @@ import org.testng.Assert;
 import java.time.Duration;
 
 public class FinishPage {
-    private WebDriver driver;
-    private final WebElement HAMBURGER_BUTTON;
-    private final WebElement LOGOUT;
-    private final WebElement PAGE_HEADER;
-    private final WebElement SHOPPING_CART_BUTTON;
-    private final WebElement SECONDARY_HEADER;
-    private final WebElement CHECKOUT_COMPLETE_HEADER;
+    private final WebDriver driver;
+    private WebElement HAMBURGER_BUTTON;
+    private WebElement LOGOUT;
+    private WebElement PAGE_HEADER;
+    private WebElement SHOPPING_CART_BUTTON;
+    private WebElement SECONDARY_HEADER;
+    private WebElement CHECKOUT_COMPLETE_HEADER;
 
-    public FinishPage(WebDriver driver) {
+    public FinishPage(final WebDriver driver) {
         this.driver = driver;
         this.HAMBURGER_BUTTON = driver.findElement(By.cssSelector("div.bm-burger-button"));
         this.LOGOUT = driver.findElement(By.id("logout_sidebar_link"));
