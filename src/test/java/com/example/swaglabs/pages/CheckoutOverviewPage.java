@@ -7,13 +7,13 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 public class CheckoutOverviewPage {
-    private WebDriver driver;
-    private final WebElement HAMBURGER_BUTTON;
-    private final WebElement PAGE_HEADER;
-    private final WebElement SHOPPING_CART_BUTTON;
-    private final WebElement SECONDARY_HEADER;
-    private final WebElement CANCEL_BUTTON;
-    private final WebElement FINISH_BUTTON;
+    private final WebDriver driver;
+    private WebElement HAMBURGER_BUTTON;
+    private WebElement PAGE_HEADER;
+    private WebElement SHOPPING_CART_BUTTON;
+    private WebElement SECONDARY_HEADER;
+    private WebElement CANCEL_BUTTON;
+    private WebElement FINISH_BUTTON;
 
     public CheckoutOverviewPage(WebDriver driver) {
         this.driver = driver;
@@ -42,10 +42,6 @@ public class CheckoutOverviewPage {
 
         final boolean isShoppingCartButtonDisplayed = SHOPPING_CART_BUTTON.isDisplayed();
         Assert.assertTrue(isShoppingCartButtonDisplayed, ValidationMessage.VALIDATE_SHOPPING_CART_BUTTON_IS_DISPLAYED);
-    }
-
-    public void clickCancelButton() {
-        CANCEL_BUTTON.click();
     }
 
     public void clickFinishButton() {

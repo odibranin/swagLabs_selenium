@@ -8,7 +8,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
 import java.time.Duration;
 
 public class ProductsPage {
@@ -22,9 +21,8 @@ public class ProductsPage {
     private final WebElement RED_TSHIRT_ADD_TO_CART_BUTTON;
     private final WebElement PRODUCT_ONESIE;
     private final WebElement ONESIE_ADD_TO_CART_BUTTON;
-//    private final WebElement ITEM_COUNTER;
 
-    public ProductsPage(WebDriver driver) {
+    public ProductsPage(final WebDriver driver) {
         this.driver = driver;
         this.HAMBURGER_BUTTON = driver.findElement(By.xpath("//*[@id=\"menu_button_container\"]/div/div[3]/div/button"));
         this.PAGE_HEADER = driver.findElement(By.cssSelector("div.header_label"));
@@ -35,7 +33,6 @@ public class ProductsPage {
         this.RED_TSHIRT_ADD_TO_CART_BUTTON = PRODUCT_RED_TSHIRT.findElement(By.xpath(".//button[@class='btn_primary btn_inventory']"));
         this.PRODUCT_ONESIE = driver.findElement(By.xpath("//div[@class='inventory_item'][6]"));
         this.ONESIE_ADD_TO_CART_BUTTON = PRODUCT_ONESIE.findElement(By.xpath(".//button[@class='btn_primary btn_inventory']"));
-//        this.ITEM_COUNTER = driver.findElement(By.cssSelector("span.fa-layers-counter.shopping_cart_badge"));
     }
 
     public void validatePageContent() {
@@ -54,24 +51,14 @@ public class ProductsPage {
         Assert.assertTrue(isShoppingCartButtonDisplayed, ValidationMessage.VALIDATE_SHOPPING_CART_BUTTON_IS_DISPLAYED);
     }
 
-    int counter = 0;
-
     public void addItemsToCart() {
         Select dropdown = new Select(FILTER_DROPDOWN);
         dropdown.selectByValue("za");
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.visibilityOf(RED_TSHIRT_ADD_TO_CART_BUTTON));
         RED_TSHIRT_ADD_TO_CART_BUTTON.click();
-        counter++;
         wait.until(ExpectedConditions.elementToBeClickable(ONESIE_ADD_TO_CART_BUTTON));
         ONESIE_ADD_TO_CART_BUTTON.click();
-        counter++;
-
-    }
-
-    public void removeItemFromCart() {
-        PRODUCT_RED_TSHIRT.click();
-        counter--;
     }
 
     public void clickOnCartButton() {

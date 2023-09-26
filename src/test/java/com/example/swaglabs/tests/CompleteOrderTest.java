@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class SmokeTest {
+public class CompleteOrderTest {
     private WebDriver driver;
     private LoginPage loginPage;
     private ProductsPage productsPage;
@@ -21,7 +21,13 @@ public class SmokeTest {
     @BeforeMethod()
     public void setUp(final String browser) {
         this.driver = WebDriverSetup.getWebDriver(browser);
+
         this.loginPage = new LoginPage(driver);
+        this.productsPage = new ProductsPage(driver);
+        this.yourCartPage = new YourCartPage(driver);
+        this.checkoutYourInformationPage = new CheckoutYourInformationPage(driver);
+        this.checkoutOverviewPage = new CheckoutOverviewPage(driver);
+        this.finishPage = new FinishPage(driver);
 
         //Validate Login page content
         loginPage.validatePageContent();
@@ -35,7 +41,6 @@ public class SmokeTest {
 
     @Test
     public void completeOrder() {
-        this.productsPage = new ProductsPage(driver);
         //Validate "Products" page content
         productsPage.validatePageContent();
 
@@ -45,14 +50,12 @@ public class SmokeTest {
         //Click on "Cart" button
         productsPage.clickOnCartButton();
 
-        this.yourCartPage = new YourCartPage(driver);
         //Validate "Your Cart" page content
         yourCartPage.validatePageContent();
 
         //Click on the "Checkout" button
         yourCartPage.clickCheckoutButton();
 
-        this.checkoutYourInformationPage = new CheckoutYourInformationPage(driver);
         //Validate "Checkout:Your Information" page content
         checkoutYourInformationPage.validatePageContent();
 
@@ -62,14 +65,12 @@ public class SmokeTest {
         //Click on "Continue" button
         checkoutYourInformationPage.clickContinueButton();
 
-        this.checkoutOverviewPage = new CheckoutOverviewPage(driver);
         //Validate "Checkout:Overview" page content
         checkoutOverviewPage.validatePageContent();
 
         //Click on "Finish" button
         checkoutOverviewPage.clickFinishButton();
 
-        this.finishPage = new FinishPage(driver);
         //Validate "Finish" page content
         finishPage.validatePageContent();
 

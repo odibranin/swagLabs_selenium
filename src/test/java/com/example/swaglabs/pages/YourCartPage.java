@@ -10,18 +10,17 @@ import java.util.List;
 
 public class YourCartPage {
     private WebDriver driver;
-    private final WebElement PAGE_HEADER;
-    private final WebElement SHOPPING_CART_BUTTON;
-    private final WebElement SHOPPING_CART_BUTTON_VALUE;
-    private final WebElement SECONDARY_HEADER;
-    private final WebElement CART_QUANTITY_LABEL;
-    private final WebElement CART_DESCRIPTION_LABEL;
+    private WebElement PAGE_HEADER;
+    private WebElement SHOPPING_CART_BUTTON;
+    private WebElement SHOPPING_CART_BUTTON_VALUE;
+    private WebElement SECONDARY_HEADER;
+    private WebElement CART_QUANTITY_LABEL;
+    private WebElement CART_DESCRIPTION_LABEL;
     List<WebElement> CART_ITEMS;
-    private final WebElement CONTINUE_SHOPPING_BUTTON;
-    private final WebElement CHECKOUT_BUTTON;
+    private WebElement CONTINUE_SHOPPING_BUTTON;
+    private WebElement CHECKOUT_BUTTON;
 
-
-    public YourCartPage(WebDriver driver) {
+    public YourCartPage(final WebDriver driver) {
         this.driver = driver;
         this.PAGE_HEADER = driver.findElement(By.cssSelector("div.header_label"));
         this.SHOPPING_CART_BUTTON = driver.findElement(By.id("shopping_cart_container"));
@@ -58,23 +57,9 @@ public class YourCartPage {
         Assert.assertEquals(actualCartDescriptionLabel, expectedCartDescriptionLabel, ValidationMessage.VALIDATE_CART_DESCRIPTION_HEADER);
     }
 
-    public void removeItemFromCartButton() {
-        for (WebElement cartItem : CART_ITEMS) {
-            WebElement removeButton = cartItem.findElement(By.cssSelector("button.btn_secondary.cart_button"));
-            removeButton.click();
-        }
-    }
-
-    public void clickContinueShoppingButton() {
-        CONTINUE_SHOPPING_BUTTON.click();
-    }
-
     public void clickCheckoutButton() {
         CHECKOUT_BUTTON.click();
     }
-
-
-
 }
 
 

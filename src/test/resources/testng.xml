@@ -6,7 +6,7 @@
     <parameter name="password" value="secret_sauce"/>
     <test name="UI Test" >
         <classes>
-            <class name="com.example.swaglabs.tests.SmokeTest" >
+            <class name="com.example.swaglabs.tests.CompleteOrderTest" >
             </class>
         </classes>
     </test>

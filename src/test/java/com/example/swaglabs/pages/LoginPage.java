@@ -8,15 +8,15 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 public class LoginPage {
-    private WebDriver driver;
-    private final WebElement LOGIN_HEADER;
-    private final WebElement USERNAME_FIELD;
-    private final WebElement PASSWORD_FIELD;
-    private final WebElement LOGIN_BUTTON;
-    private final WebElement LOGIN_FORM;
-    private final WebElement LOGO_IMAGE;
+    private final WebDriver driver;
+    private WebElement LOGIN_HEADER;
+    private WebElement USERNAME_FIELD;
+    private WebElement PASSWORD_FIELD;
+    private WebElement LOGIN_BUTTON;
+    private WebElement LOGIN_FORM;
+    private WebElement LOGO_IMAGE;
 
-    public LoginPage(WebDriver driver) {
+    public LoginPage(final WebDriver driver) {
         this.driver = driver;
         this.LOGIN_HEADER = driver.findElement(By.cssSelector("div.login_logo"));
         this.USERNAME_FIELD = driver.findElement((By.id("user-name")));
@@ -50,11 +50,6 @@ public class LoginPage {
     public void fillLoginForm() {
        USERNAME_FIELD.sendKeys(GlobalValues.VALID_USERNAME);
        PASSWORD_FIELD.sendKeys(GlobalValues.VALID_PASSWORD);
-    }
-
-    public void clearUsernameAndPasswordFields() {
-        USERNAME_FIELD.clear();
-        PASSWORD_FIELD.clear();
     }
 
     public void clickSubmitButton() {

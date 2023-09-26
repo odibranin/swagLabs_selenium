@@ -12,7 +12,7 @@ public class WebDriverSetup {
             case "chrome" -> getChromeDriver();
             case "firefox" -> getFirefoxDriver();
             case "edge" -> getEdgeDriver();
-            default -> throw new IllegalArgumentException("Browser configuration not found for the following browser: "
+            default -> throw new IllegalArgumentException(ErrorMessage.BROWSER_NOT_FOUND
                     + browserName);
         };
         configureDriver(driver);
